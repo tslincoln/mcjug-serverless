@@ -6,13 +6,14 @@ import './styles.scss'
 export class TodoList extends React.Component {
   render() {
     const tasks = this.props.tasks
+    const name = this.props.name
     const list = tasks.map(function(task){
-      return <div className="task-item" key={task.id}>{task.name}</div>
+      return <div className="task-item" key={task.id}><div className='task-title'>{task.name}</div>{task.text}</div>
     })
 
     return (
       <div className="todo-list">
-        <h1>Todo List for {this.props.name}</h1>
+        <h3>{name}</h3>
         <div className="tasks" ref={this.dragulaDecorator}>
           {list}
         </div>

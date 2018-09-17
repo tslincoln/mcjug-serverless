@@ -1,13 +1,19 @@
 .todo-list {
-  width: 400px;
-  height: 800px;
-
+  width: 240px;
+  height: 100%;
+  float: left;
   .tasks {
     .task-item {
       min-height: 100px;
       padding: 12px;
       margin: 12px;
       background-color: #cbcbcb;
+      cursor: grab;
+      .task-title {
+        font-weight: bold;
+        font-size: 1.2em;
+        padding-bottom: 8px;
+      }
     }
   }
 }
