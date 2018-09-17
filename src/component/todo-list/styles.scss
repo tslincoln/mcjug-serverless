@@ -1,0 +1,14 @@
+.todo-list {
+  width: 400px;
+  height: 800px;
+
+  .tasks {
+    .task-item {
+      min-height: 100px;
+      padding: 12px;
+      margin: 12px;
+      background-color: #cbcbcb;
+    }
+  }
+}
+

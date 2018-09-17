@@ -1,20 +1,28 @@
 import React from 'react';
-class TodoList extends React.Component {
-    render() {
-        const tasks = this.props.tasks
-        const list = tasks.map(function(task){
-            return <li key={task.id}>{task.name}</li>
-        })
+import Dragula from 'react-dragula';
 
-        return (
-            <div className="todo-list">
-                <h1>Todo List for {this.props.name}</h1>
-                <ul>
-                    {list}
-                </ul>
-            </div>
-        );
+import './styles.scss'
+
+export class TodoList extends React.Component {
+  render() {
+    const tasks = this.props.tasks
+    const list = tasks.map(function(task){
+      return <div className="task-item" key={task.id}>{task.name}</div>
+    })
+
+    return (
+      <div className="todo-list">
+        <h1>Todo List for {this.props.name}</h1>
+        <div className="tasks" ref={this.dragulaDecorator}>
+          {list}
+        </div>
+      </div>
+    );
+  }
+
+  dragulaDecorator(node) {
+    if (node) {
+      Dragula([node], {})
     }
+  }
 }
-
-export {TodoList};
