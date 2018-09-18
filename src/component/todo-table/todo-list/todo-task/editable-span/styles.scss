@@ -1,0 +1,15 @@
+.editable-span {
+  span {
+    cursor: text;
+  }
+
+  &:focus-within {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 10px #000000;
+
+    span:focus {
+      outline: none;
+    }
+  }
+}

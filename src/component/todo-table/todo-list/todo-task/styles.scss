@@ -1,0 +1,41 @@
+.task-item {
+  position: relative;
+  min-height: 100px;
+  margin: 12px;
+  background-color: #cbcbcb;
+  cursor: grab;
+
+  .todo-close {
+    display: none;
+  }
+
+  &:hover .todo-close {
+    position: absolute;
+    display: block;
+    bottom: 6px;
+    right: 6px;
+    cursor: pointer;
+    color: #888888;
+  }
+
+  .task-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 8px;
+  }
+
+  .task-content {
+    padding: 8px;
+  }
+
+  &.add-task {
+    text-align: center;
+    background-color: #f3f3f3;
+    border: 2px dashed #b5b5b5;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: bolder;
+    color: #888888;
+  }
+}
