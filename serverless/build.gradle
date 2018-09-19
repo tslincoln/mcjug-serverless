@@ -1,0 +1,27 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+
+group 'org.mcjug'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile 'com.amazonaws:aws-java-sdk-bom:1.11.410'
+    compile 'com.amazonaws:aws-java-sdk-lambda:1.11.410'
+    compile 'com.amazonaws:aws-java-sdk-dynamodb:1.11.410'
+    compile 'com.amazonaws:aws-lambda-java-core:1.2.0'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.mcjug.serverless.TestCRUD"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

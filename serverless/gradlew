@@ -1,0 +1,55 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "projectId",
+    "taskId",
+    "title",
+    "text"
+  ],
+  "properties": {
+    "projectId": {
+      "$id": "#/properties/projectId",
+      "type": "string",
+      "title": "The Projectid Schema",
+      "default": "",
+      "examples": [
+        "ABC-123"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "taskId": {
+      "$id": "#/properties/taskId",
+      "type": "string",
+      "title": "The Taskid Schema",
+      "default": "",
+      "examples": [
+        "ABC-123"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The Title Schema",
+      "default": "",
+      "examples": [
+        "ABC-123"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "text": {
+      "$id": "#/properties/text",
+      "type": "string",
+      "title": "The Text Schema",
+      "default": "",
+      "examples": [
+        "ABC-123"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}
