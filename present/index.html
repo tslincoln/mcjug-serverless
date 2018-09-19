@@ -1,0 +1,152 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/black.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.min.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>
+                <p>Intro to serverless applications</p>
+                <p>Using lambda functions in AWS</p>
+            </h4>
+        </section>
+        <section>
+            <h5>Host</h5>
+            <p>Thomas Lincoln</p>
+            <p>tslincoln@gmail.com</p>
+        </section>
+        <section>
+            <h5>What is a serverless application?</h5>
+            <ul>
+                <li>only uses pure functions to perform work</li>
+                <li>can use database for persisting data</li>
+                <li>requires a proxy or gateway to serve requests</li>
+            </ul>
+        </section>
+        <section>
+            <section>
+                <h5>Lambdas in AWS</h5>
+                <ul>
+                    <li>perform a limited task, optionally returns result</li>
+                    <li>can access data and trigger events across AWS</li>
+                    <li>only incurs cost when running</li>
+                </ul>
+            </section>
+            <section>
+                <h5>Java Example</h5>
+                <pre style="font-size: 0.4em;">
+                    <code data-trim data-noescape>
+public class GetRequestHandler implements RequestHandler &lt;String,String&gt; {
+
+    public String handleRequest(String model, Context context) {
+        return model.toLowerCase();
+    }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h5>NodeJS Example</h5>
+                <pre style="font-size: 0.4em;">
+                    <code data-trim data-noescape>
+exports.myHandler = function(event, context, callback) {
+   const result = model.toLowerCase();
+   callback(null, result);
+}
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <h5>Serverless Architecture in AWS</h5>
+            <p>
+                <img src="./images/AWS_architecture.png">
+            </p>
+        </section>
+        <section>
+            <h5>Classic Scaling &nbsp; vs. &nbsp; Lambda</h5>
+            <table style="color: white">
+                <thead><tr>
+                    <th>ECS/EC2</th>
+                    <th>Lambda</th>
+                </tr></thead>
+                <tbody style="font-size: 0.6em">
+                    <tr>
+                        <td style="border-bottom: 1px solid #010101">well understood</td>
+                        <td style="border-bottom: 1px solid #010101">new and shiny</td>
+                    </tr><tr>
+                        <td style="border-bottom: 1px solid #010101">dedicated resource</td>
+                        <td style="border-bottom: 1px solid #010101">on demand</td>
+                    </tr><tr>
+                        <td style="border-bottom: 1px solid #010101">continuous cost</td>
+                        <td style="border-bottom: 1px solid #010101">intermittent cost</td>
+                    </tr><tr>
+                        <td style="border-bottom: 1px solid #010101">large scaling steps</td>
+                        <td style="border-bottom: 1px solid #010101">1:1 scale per request</td>
+                    </tr><tr>
+                        <td style="border-bottom: 1px solid #010101">always available</td>
+                        <td style="border-bottom: 1px solid #010101">requires warm-up</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h5>Example Serverless Architecture in AWS</h5>
+            <p>
+                <img src="./images/AWS_architecture.png">
+            </p>
+        </section>
+        <section>
+            <section>
+                <h5>Setup and Implementation</h5>
+                <p>
+                    <ul>
+                        <li>Create AWS Account</li>
+                        <li>Setup IAM Roles</li>
+                        <li>Create DynamoDB Table</li>
+                        <li>Define Lambda</li>
+                        <li>Define API Gateway</li>
+                        <li>Deploy API Gateway</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h5>1. Create AWS Account</h5>
+                <p>One-off projects fit into free tier</p>
+                <p>Federated login available for companies</p>
+            </section>
+            <section>
+                <h5>2. Setup IAM Roles</h5>
+                <p>Authorize db read/write</p>
+                <p>Setup trust between Lambda and DynamoDB</p>
+            </section>
+            <section>
+                <h5>3. Create DynamoDB Table</h5>
+                <p>Key/value data store</p>
+                <p>Indexed by PK, or hash and sort key</p>
+            </section>
+            <section>
+                <h5>4. Define API Gateway</h5>
+                <p>Layout rest endpoints</p>
+                <p>Bind them to lambdas</p>
+                <p>Remap GET query params</p>
+            </section>
+        </section>
+        <section>
+            <h5>Demo App</h5>
+            <p>
+                <a href="https://github.com/tslincoln/mcjug-serverless">github.com/tslincoln/mcjug-serverless</a>
+            </p>
+        </section>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js"></script>
+<script>
+  Reveal.initialize();
+</script>
+</body>
+</html>
