@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/black.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.min.css">
+    <meta charset="utf-8" />
 </head>
 <body>
 <div class="reveal">
@@ -20,6 +21,14 @@
         </section>
         <section>
             <h5>What is a serverless application?</h5>
+            <p style="color: #1597c2">
+                "Serverless computing allows you to build and run applications
+                and services without thinking about servers. Serverless applications
+                don't require you to provision, scale, and manage any servers."
+            </p>
+        </section>
+        <section>
+            <h5>Implementation</h5>
             <ul>
                 <li>only uses pure functions to perform work</li>
                 <li>can use database for persisting data</li>
@@ -36,28 +45,24 @@
                 </ul>
             </section>
             <section>
-                <h5>Java Example</h5>
-                <pre style="font-size: 0.4em;">
-                    <code data-trim data-noescape>
+                <h5>Java</h5>
+                <pre style="font-size: 0.4em;"><code data-trim data-noescape>
 public class GetRequestHandler implements RequestHandler &lt;String,String&gt; {
 
     public String handleRequest(String model, Context context) {
         return model.toLowerCase();
     }
 }
-                    </code>
-                </pre>
+                    </code></pre>
             </section>
             <section>
-                <h5>NodeJS Example</h5>
-                <pre style="font-size: 0.4em;">
-                    <code data-trim data-noescape>
+                <h5>NodeJS</h5>
+                <pre style="font-size: 0.4em;"><code data-trim data-noescape>
 exports.myHandler = function(event, context, callback) {
    const result = model.toLowerCase();
    callback(null, result);
 }
-                    </code>
-                </pre>
+                    </code></pre>
             </section>
         </section>
         <section>
@@ -94,10 +99,8 @@ exports.myHandler = function(event, context, callback) {
             </table>
         </section>
         <section>
-            <h5>Example Serverless Architecture in AWS</h5>
-            <p>
-                <img src="./images/AWS_architecture.png">
-            </p>
+            <p>Meet Sam, the serverless mascot</p>
+            <img src="images/sam.squirrel.png"/>
         </section>
         <section>
             <section>
@@ -141,12 +144,42 @@ exports.myHandler = function(event, context, callback) {
                 <a href="https://github.com/tslincoln/mcjug-serverless">github.com/tslincoln/mcjug-serverless</a>
             </p>
         </section>
+        <section>
+            <h5>Limitations</h5>
+            <ul>
+                <li>Bound to vendor API</li>
+                <li>Limited payload, memory, disk, cpu, time</li>
+                <li>Can only run 1000 concurrent lambdas</li>
+                <li>Limits can be increased by customer request</li>
+            </ul>
+        </section>
+        <section>
+            <h5>Advanced Topics</h5>
+            <ul>
+                <li>Dealing with warm-up time</li>
+                <li>DB connection pooling</li>
+                <li>Caching layer</li>
+                <li>Supporting architecture</li>
+            </ul>
+        </section>
+        <section>
+            <h5>Resources</h5>
+            <p>https://aws.amazon.com/serverless/build-a-web-app/</p>
+            <p>https://aws.amazon.com/lambda/</p>
+            <p>https://docs.aws.amazon.com/lambda/latest/dg/limits.html</p>
+            <img src="images/kubrick.monolith.gif"/>
+        </section>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
 <script>
-  Reveal.initialize();
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    ]
+  });
 </script>
 </body>
 </html>
